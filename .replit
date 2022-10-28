@@ -23,8 +23,10 @@ command = [
 [env]
 VIRTUAL_ENV = "/home/runner/${REPL_SLUG}/venv"
 PATH = "${VIRTUAL_ENV}/bin"
-PYTHONPATH="${VIRTUAL_ENV}/lib/python3.8/site-packages"
-REPLIT_POETRY_PYPI_REPOSITORY="https://package-proxy.replit.com/pypi/"
+PYTHONPATH = "${VIRTUAL_ENV}/lib/python3.10/site-packages"
+REPLIT_POETRY_PYPI_REPOSITORY = "https://package-proxy.replit.com/pypi/"
+MPLBACKEND = "TkAgg"
+POETRY_CACHE_DIR = "${HOME}/${REPL_SLUG}/.cache/pypoetry"
 
 [debugger]
 support = true
@@ -77,3 +79,6 @@ pattern = "**/*.py"
 
 [languages.python3.languageServer]
 start = "pylsp"
+
+[unitTest]
+language = "python3"

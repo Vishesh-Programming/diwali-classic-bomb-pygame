@@ -37,6 +37,7 @@ class Player:
         self.y = y
         self.center_x = self.x - 10
         self.center_y = self.y + 25
+        self.freeze = False
 
     def move_forward(self):
         self.x -= 10    
@@ -91,6 +92,7 @@ class TNT:
     def doExplosion(self):
         self.tnt = explosion
         self.explosion = True
+        player.freeze = True
         
         
 tnt = TNT(100,350)
@@ -113,16 +115,17 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-            
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_a:
-                player.move_forward()
-            if event.key == pygame.K_d:
-                player.move_backward()
-            if event.key == pygame.K_w:
-                player.move_up()
-            if event.key == pygame.K_s:
-                player.move_down()
+
+        if player.freeze == False :
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_a:
+                    player.move_forward()
+                if event.key == pygame.K_d:
+                    player.move_backward()
+                if event.key == pygame.K_w:
+                    player.move_up()
+                if event.key == pygame.K_s:
+                    player.move_down()
 
         # condition to burn tnt
         print("player x" , player.x)
